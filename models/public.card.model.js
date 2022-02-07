@@ -6,9 +6,12 @@ const publicCardSchema = new Schema(
       type: boolean,
       default: true,
     },
-    cardText: String,
+    cardText: {
+      type: String,
+      required: true,
+    },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
-module.exports = model("publicCard", publicCardSchema);
+module.exports = model("PublicCard", publicCardSchema);
