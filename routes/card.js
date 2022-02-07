@@ -1,2 +1,2 @@
-const publicCard = require("../models/public.card.model.js");
-const privateCard = require("../models/private.card.model.js");
+const PublicCard = require("../models/public.card.model");
+const PrivateCard = require("../models/private.card.model");

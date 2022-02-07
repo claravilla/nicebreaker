@@ -6,6 +6,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       unique: true,
+      required: true,
     },
     password: { type: String, minlength: 8 }, //password must be at least 8 characters
     cards: [{ type: Schema.Types.ObjectId, ref: "PrivateCard" }],
