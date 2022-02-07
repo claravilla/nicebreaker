@@ -10,10 +10,10 @@ const privateCardSchema = new Schema(
       type: [String], //the user can select multiple labels from the list
       enum: ["SFW", "dinner table", "night out", "first date"],
     },
-    hasWorked: boolean,
-    hasNotWorked: boolean,
+    hasWorked: Boolean,
+    hasNotWorked: Boolean,
     publicCardId: String,
-    public: { type: boolean, default: false },
+    public: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
