@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const publicCardSchema = new Schema(
   {
     public: {
-      type: boolean,
+      type: Boolean,
       default: true,
     },
     cardText: {
