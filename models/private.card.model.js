@@ -7,7 +7,7 @@ const privateCardSchema = new Schema(
       required: true,
     },
     label: {
-      type: [String],
+      type: [String], //the user can select multiple labels from the list
       enum: ["SFW", "dinner table", "night out", "first date"],
     },
     hasWorked: boolean,

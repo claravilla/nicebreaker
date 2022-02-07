@@ -1,13 +1,13 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, trusted } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema(
   {
-    username: {
+    email: {
       type: String,
-      // unique: true -> Ideally, should be unique, but its up to you
+      unique: trusted,
     },
-    password: String,
+    password: { type: String, minlength: 8 }, //password must be at least 8 characters
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
