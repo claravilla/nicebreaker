@@ -18,4 +18,4 @@ const privateCardSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = model("privateCard", privateCardSchema);
+module.exports = model("PrivateCard", privateCardSchema);

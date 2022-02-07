@@ -5,9 +5,10 @@ const userSchema = new Schema(
   {
     email: {
       type: String,
-      unique: trusted,
+      unique: true,
     },
     password: { type: String, minlength: 8 }, //password must be at least 8 characters
+    cards: [{ type: Schema.Types.ObjectId, ref: "PrivateCard" }],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

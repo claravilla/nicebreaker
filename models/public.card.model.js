@@ -14,4 +14,4 @@ const publicCardSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = model("publicCard", publicCardSchema);
+module.exports = model("PublicCard", publicCardSchema);
