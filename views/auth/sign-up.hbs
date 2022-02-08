@@ -1,10 +1,11 @@
-<form>
+<form action="/signup" method="POST">
   <div class="mb-3">
     <label for="InputEmail" class="form-label">Email address</label>
     <input
       type="email"
       class="form-control"
       id="InputEmail"
+      name="email"
       aria-describedby="emailHelp"
     />
     <div id="emailHelp" class="form-text">We'll never share your email with
@@ -12,7 +13,7 @@
   </div>
   <div class="mb-3">
     <label for="InputPassword" class="form-label">Password</label>
-    <input type="password" class="form-control" id="InputPassword" />
+    <input type="password" name="password" class="form-control" id="InputPassword" />
   </div>
-  <button type="submit" class="btn">sign up</button>
+  <button type="submit" class="btn">Sign up</button>
 </form>
