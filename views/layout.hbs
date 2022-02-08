@@ -15,11 +15,18 @@
   </head>
 
   <body>
-    <div class="container-fluid">
-      <nav class="navbar">
-        <form class="container-fluid justify-content-start">
-          <button class="btn btn-lg" type="button">Sign up</button>
-          <button class="btn btn-lg ms-3" type="button">Log in</button>
+    <div>
+      <nav class="navbar d-flex flex-row">
+        <form class="justify-content-start my-1 mx-3">
+          <a class="btn btn-lg" href="/signup">Sign up</a>
+          <a class="btn btn-lg ms-3" href="/login">Log in</a>
+        </form>
+        <form
+          class="justify-content-end my-1 mx-3"
+          action="/logout"
+          method="POST"
+        >
+          <button class="btn btn-lg" type="button">Log out</button>
         </form>
       </nav>
     </div>
