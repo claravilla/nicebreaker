@@ -19,8 +19,10 @@
       <nav class="navbar d-flex flex-row">
 
         <form class="justify-content-start my-1 mx-3">
-          <a class="btn btn-lg" href="/signup">Sign up</a>
-          <a class="btn btn-lg ms-3" href="/login">Log in</a>
+          {{#if session.user}}
+            <a class="btn btn-lg" href="/signup">Sign up</a>
+            <a class="btn btn-lg ms-3" href="/login">Log in</a>
+          {{/if}}
         </form>
         <form
           class="justify-content-end my-1 mx-3"
