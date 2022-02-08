@@ -25,6 +25,9 @@ const session = require("express-session");
 // https://www.npmjs.com/package/connect-mongo
 const MongoStore = require("connect-mongo");
 
+//add hbs
+const hbs = require("hbs");
+
 // Connects the mongo uri to maintain the same naming structure
 const MONGO_URI = require("../utils/consts");
 
@@ -40,11 +43,14 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
 
+  //register hbs partials
+  hbs.registerPartials(__dirname + "/views/partials");
+
   // Normalizes the path to the views folder
   app.set("views", path.join(__dirname, "..", "views"));
   // Sets the view engine to handlebars
   app.set("view engine", "hbs");
-  hbs.registerPartials(__dirname + "/views/partials");
+
   // AHandles access to the public folder
   app.use(express.static(path.join(__dirname, "..", "public")));
 
