@@ -21,6 +21,12 @@ body {
   color: #f9f9f9;
 }
 
+.btn:hover,
+.btn:focus {
+  background-color: #7d7297;
+  color: #f9f9f9;
+}
+
 .navbar {
   background-color: #f7dbf0;
 }

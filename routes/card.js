@@ -27,8 +27,6 @@ router.get("/", isLoggedIn, (req, res, next) => {
       console.log(error);
       next(error);
     });
-
-  res.render("mycards/my-cards");
 });
 
 //CREATING A NEW CARD
