@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const mongoose = require("mongoose");
 const PublicCard = require("../models/public.card.model");
 
 /* GET home page */

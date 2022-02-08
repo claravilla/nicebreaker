@@ -15,6 +15,6 @@ const publicCardSchema = new Schema(
   { timestamps: true }
 );
 
-publicCardSchema.plugin(random);
+publicCardSchema.plugin(random); //npm package to get a random element from a collection
 
 module.exports = model("PublicCard", publicCardSchema);
