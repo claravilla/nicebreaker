@@ -27,8 +27,6 @@ router.get("/", isLoggedIn, (req, res, next) => {
       console.log(error);
       next(error);
     });
-
-  res.render("mycards/my-cards");
 });
 
 //CREATING A NEW CARD
@@ -38,9 +36,9 @@ router.get("/new", isLoggedIn, (req, res, next) => {
 });
 
 router.post("/new", (req, res, next) => {
-  const { cardText, labels } = req.body; //getting the data from the form
+  const { cardText, label } = req.body; //getting the data from the form
   const userId = req.session.user._id; //getting the user ID
-  PrivateCard.create(cardText, labels) //create card in private collection
+  PrivateCard.create({ cardText, label }) //create card in private collection
     .then((createdCard) => {
       cardId = createdCard._id;
       return User.findOneAndUpdate(

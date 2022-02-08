@@ -1,1 +1,17 @@
 <h1>This is where you can create new cards.</h1>
+<form action="/mycards/new" method="post">
+  <div class="form-group">
+    <label for="cardText">Text</label>
+    <input type="text" class="form-control" id="cardText" name="cardText" placeholder="Your text">
+  </div>
+  <div class="form-group">
+    <label for="label">Label</label>
+    <select multiple class="form-control" id="label" name="label">
+      <option value="SFW">SFW</option>
+      <option value="dinner table">Dinner Table</option>
+      <option value="night out">Night Out</option>
+      <option value="first date">First dare</option>
+    </select>
+  </div>
+ <button type="submit" class="btn btn-primary">Submit</button>
+</form>
