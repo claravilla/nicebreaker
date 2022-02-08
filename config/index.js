@@ -31,8 +31,6 @@ const hbs = require("hbs");
 // Connects the mongo uri to maintain the same naming structure
 const MONGO_URI = require("../utils/consts");
 
-const hbs = require("hbs");
-
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs
