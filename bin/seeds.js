@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const PublicCard = require("../models/public.card.model");
 
 //connection with DB
-const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/nicebraker";
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/nicebreaker";
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,

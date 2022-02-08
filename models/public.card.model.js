@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const random = require("mongoose-simple-random");
 
 const publicCardSchema = new Schema(
   {
@@ -13,5 +14,7 @@ const publicCardSchema = new Schema(
   },
   { timestamps: true }
 );
+
+publicCardSchema.plugin(random);
 
 module.exports = model("PublicCard", publicCardSchema);
