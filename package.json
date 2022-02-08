@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build-css": "tailwindcss -i build src/input.css -o public/stylesheets/style.css"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -19,6 +20,7 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "tailwindcss": "^3.0.19"
   }
 }
