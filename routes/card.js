@@ -15,7 +15,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 //GET USER CARDS
 
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedIn, (req, res, next) => {
   const userId = req.session.user._id; //getting the user ID from the session object
   User.findById(userId)
     .populate("cards")
@@ -33,19 +33,19 @@ router.get("/", (req, res, next) => {
 
 //CREATING A NEW CARD
 
-router.get("/new", (req, res, next) => {
+router.get("/new", isLoggedIn, (req, res, next) => {
   res.render("mycards/create-card");
 });
 
 router.post("/new", (req, res, next) => {
-  const { cardText, labels } = req.body;
-  const userId = req.session.user._id;
-  PrivateCard.create(cardText, labels)
+  const { cardText, labels } = req.body; //getting the data from the form
+  const userId = req.session.user._id; //getting the user ID
+  PrivateCard.create(cardText, labels) //create card in private collection
     .then((createdCard) => {
       cardId = createdCard._id;
       return User.findOneAndUpdate(
         { id: userId },
-        { $push: { cards: cardId } }
+        { $push: { cards: cardId } } //add card to the the user record
       );
     })
     .then(() => res.redirect("/mycards"))
@@ -53,6 +53,49 @@ router.post("/new", (req, res, next) => {
       console.log(error);
       res.render("mycards/create-card", { errorMessage: error });
     });
+});
+
+//EDITING AN EXISTING CARD
+router.get("/:id/edit", (req, res, next) => {
+  const { cardId } = req.params;
+  PrivateCard.findById({ _id: cardId }).then((card) => {
+    res.render("mycards/edit-card", { card });
+  });
+});
+
+router.post("/:id/edit", isLoggedIn, (req, res, next) => {
+  const { cardId } = req.params;
+  const { cardText, labels, hasWorked, hasNotWorked } = req.body;
+  PrivateCard.findByIdAndUpdate(
+    { _id: cardId },
+    { cardText, labels, hasWorked, hasNotWorked },
+    { new: true }
+  )
+    .then((card) => {
+      console.log("card had been update: ", card);
+      res.redirect("/");
+    })
+    .catch((error) => {
+      res.render("mycards/edit-card", { errorMessage: error });
+    });
+});
+
+//DELETING AN EXISTING CARD
+
+//rendering the modal when the delete button is created
+router.get("/:id/delete", isLoggedIn, (req, res, next) => {
+  const cardId = req.params;
+  res.render("mycards/modal");
+});
+
+//delete the card
+
+router.post("/:id/delete", isLoggedIn, (req, res, next) => {
+  const cardId = req.params;
+  PrivateCard.deleteOne({ _id: cardId }).then(() => {
+    console.log("card has been deleted");
+    res.redirect("mycards");
+  });
 });
 
 module.exports = router;
