@@ -8,6 +8,14 @@ body {
   background-color: #f9f9f9;
 }
 
+.card {
+  background-color: #cdf0ea;
+}
+
+.card-text {
+  font-family: "Lora", serif;
+}
+
 .btn {
   background-color: #beaee2;
   color: #f9f9f9;
