@@ -41,12 +41,16 @@ router.post("/new", (req, res, next) => {
   PrivateCard.create({ cardText, label }) //create card in private collection
     .then((createdCard) => {
       cardId = createdCard._id;
+      console.log(createdCard);
       return User.findOneAndUpdate(
         { id: userId },
-        { $push: { cards: cardId } } //add card to the the user record
+        { $push: { cards: cardId } },
+        { new: true } //add card to the the user record
       );
     })
-    .then(() => res.redirect("/mycards"))
+    .then(() => {
+      res.redirect("/mycards");
+    })
     .catch((error) => {
       console.log(error);
       res.render("mycards/create-card", { errorMessage: error });
