@@ -10,25 +10,25 @@ const saltRounds = 10;
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
 
-// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
+// Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("auth/signup");
+  res.render("auth/sign-up");
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username) {
-    return res
-      .status(400)
-      .render("auth/signup", { errorMessage: "Please provide your username." });
+  if (!email || !password) {
+    return res.status(400).render("auth/sign-up", {
+      errorMessage: "Please fill the mandatory fields.",
+    });
   }
 
   if (password.length < 8) {
-    return res.status(400).render("auth/signup", {
+    return res.status(400).render("auth/sign-up", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
   }
@@ -45,13 +45,13 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
   */
 
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
-    // If the user is found, send the message username is taken
+  // Search the database for a user with the emaik submitted in the form
+  User.findOne({ email }).then((found) => {
+    // If the user is found, send the message email is taken
     if (found) {
-      return res
-        .status(400)
-        .render("auth.signup", { errorMessage: "Username already taken." });
+      return res.status(400).render("auth/sign-up", {
+        errorMessage: "Email address already taken.",
+      });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -61,57 +61,58 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((hashedPassword) => {
         // Create a user and save it in the database
         return User.create({
-          username,
+          email,
           password: hashedPassword,
         });
       })
       .then((user) => {
         // Bind the user to the session object
         req.session.user = user;
-        res.redirect("/");
+        res.redirect("/mycards");
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
           return res
             .status(400)
-            .render("auth/signup", { errorMessage: error.message });
+            .render("auth/sign-up", { errorMessage: error.message });
         }
         if (error.code === 11000) {
-          return res.status(400).render("auth/signup", {
+          return res.status(400).render("auth/sign-up", {
             errorMessage:
-              "Username need to be unique. The username you chose is already in use.",
+              "Email address needs to be unique. The email provided is already in use.",
           });
         }
         return res
           .status(500)
-          .render("auth/signup", { errorMessage: error.message });
+          .render("auth/sign-up", { errorMessage: error.message });
       });
   });
 });
 
 router.get("/login", isLoggedOut, (req, res) => {
-  res.render("auth/login");
+  res.render("auth/log-in");
 });
 
 router.post("/login", isLoggedOut, (req, res, next) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username) {
-    return res
-      .status(400)
-      .render("auth/login", { errorMessage: "Please provide your username." });
-  }
+  //check fields have been submitted
 
-  // Here we use the same logic as above
-  // - either length based parameters or we check the strength of a password
-  if (password.length < 8) {
-    return res.status(400).render("auth/login", {
-      errorMessage: "Your password needs to be at least 8 characters long.",
+  if (!email || !password) {
+    return res.status(400).render("auth/log-in", {
+      errorMessage: "Please provide your credentials.",
     });
   }
 
+  // check the length of the password
+  // if (password.length < 8) {
+  //   return res.status(400).render("auth/log-in", {
+  //     errorMessage: "Your password needs to be at least 8 characters long.",
+  //   });
+  // }
+
   // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
+  User.findOne({ email })
     .then((user) => {
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
@@ -129,7 +130,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
+        return res.redirect("/mycards");
       });
     })
 
@@ -144,9 +145,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      return res
-        .status(500)
-        .render("auth/logout", { errorMessage: err.message });
+      return res.status(500).render("/mycards", { errorMessage: err.message });
     }
     res.redirect("/");
   });
