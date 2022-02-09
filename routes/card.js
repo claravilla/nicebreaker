@@ -85,10 +85,10 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
 //DELETING AN EXISTING CARD
 
 //rendering the modal when the delete button is created
-router.get("/:id/delete", isLoggedIn, (req, res, next) => {
-  const cardId = req.params;
-  res.render("mycards/modal");
-});
+// router.get("/:id/delete", isLoggedIn, (req, res, next) => {
+//   const cardId = req.params;
+//   res.render("mycards/modal");
+// });
 
 //delete the card
 
