@@ -16,22 +16,20 @@
 
   <body>
     <div>
-      <nav class="navbar d-flex flex-row">
-
-        <form class="justify-content-start my-1 mx-3">
-          {{#if session.user}}
+      {{#if session.user}}
+        <nav class="navbar d-flex flex-row justify-content-end">
+          <form class="my-1 mx-3" action="/logout" method="POST">
+            <button class="btn btn-lg" type="submit">Log out</button>
+          </form>
+        </nav>
+      {{else}}
+        <nav class="navbar d-flex flex-row justify-content-start">
+          <form class="my-1 mx-3">
             <a class="btn btn-lg" href="/signup">Sign up</a>
             <a class="btn btn-lg ms-3" href="/login">Log in</a>
-          {{/if}}
-        </form>
-        <form
-          class="justify-content-end my-1 mx-3"
-          action="/logout"
-          method="POST"
-        >
-          <button class="btn btn-lg" type="submit">Log out</button>
-        </form>
-      </nav>
+          </form>
+        </nav>
+      {{/if}}
     </div>
     <div class="container">
       {{{body}}}
