@@ -40,10 +40,11 @@ router.post("/new", (req, res, next) => {
   let keys = Object.keys(req.body); //getting the label from the body
   let listOfKeys = keys.map((elem) => elem);
   let label = listOfKeys.splice(1);
+  const [SFW, dinnerTable, nightOut, firstDate] = label;
 
   const cardText = req.body.cardText; //getting the cardText from the body
   const userId = req.session.user._id; //getting the user ID
-  PrivateCard.create({ cardText, label }) //create card in private collection
+  PrivateCard.create({ cardText, SFW, dinnerTable, nightOut, firstDate }) //create card in private collection
     .then((createdCard) => {
       cardId = createdCard._id;
       console.log(createdCard);
