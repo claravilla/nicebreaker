@@ -21,7 +21,6 @@ router.get("/", isLoggedIn, (req, res, next) => {
     .populate("cards")
     .then((foundUser) => {
       let userCards = foundUser.cards;
-      console.log(userCards);
       res.render("mycards/my-cards", { userCards });
     })
     .catch((error) => {
@@ -38,12 +37,14 @@ router.get("/new", isLoggedIn, (req, res, next) => {
 
 router.post("/new", (req, res, next) => {
   let keys = Object.keys(req.body); //getting the label from the body
-  let listOfKeys = keys.map((elem) => elem);
-  let label = listOfKeys.splice(1);
+  let listOfKeys = keys.map((elem) => elem); //put then in an array
+  let label = listOfKeys.splice(1); //drop the cardText
+  //initialising boolean to false
   let SFW = false,
     dinnerTable = false,
     nightOut = false,
     firstDate = false;
+  //if boolean is the array of label we set it to true
   if (label.includes("SFW")) {
     SFW = true;
   }
@@ -79,23 +80,47 @@ router.post("/new", (req, res, next) => {
 
 //EDITING AN EXISTING CARD
 router.get("/:id/edit", (req, res, next) => {
-  const { cardId } = req.params;
-  PrivateCard.findById({ _id: cardId }).then((card) => {
-    res.render("mycards/edit-card", { card });
+  const { id: cardId } = req.params;
+  PrivateCard.findById(cardId).then((card) => {
+    console.log("this is the card to be edited ", card);
+    res.render("mycards/edit-card", card);
   });
 });
 
 router.post("/:id/edit", isLoggedIn, (req, res, next) => {
-  const { cardId } = req.params;
-  const { cardText, labels, hasWorked, hasNotWorked } = req.body;
+  const { id: cardId } = req.params;
+
+  let keys = Object.keys(req.body); //getting the label from the body
+  let listOfKeys = keys.map((elem) => elem); //in an array
+  let label = listOfKeys.splice(1); //drop the cardText
+  //initialising boolean to false
+  let SFW = false,
+    dinnerTable = false,
+    nightOut = false,
+    firstDate = false;
+  //if the boolean are in the array of label, we set them to true
+  if (label.includes("SFW")) {
+    SFW = true;
+  }
+  if (label.includes("dinner table")) {
+    dinnerTable = true;
+  }
+  if (label.includes("night out")) {
+    nightOut = true;
+  }
+  if (label.includes("first date")) {
+    firstDate = true;
+  }
+  const cardText = req.body.cardText;
+
   PrivateCard.findByIdAndUpdate(
     { _id: cardId },
-    { cardText, labels, hasWorked, hasNotWorked },
+    { cardText, SFW, dinnerTable, nightOut, firstDate },
     { new: true }
   )
     .then((card) => {
       console.log("card had been update: ", card);
-      res.redirect("/");
+      res.redirect("/mycards");
     })
     .catch((error) => {
       res.render("mycards/edit-card", { errorMessage: error });
@@ -103,14 +128,6 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
 });
 
 //DELETING AN EXISTING CARD
-
-//rendering the modal when the delete button is created
-// router.get("/:id/delete", isLoggedIn, (req, res, next) => {
-//   const cardId = req.params;
-//   res.render("mycards/modal");
-// });
-
-//delete the card
 
 router.post("/:id/delete", isLoggedIn, (req, res, next) => {
   const cardId = req.params;
