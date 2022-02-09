@@ -3,33 +3,36 @@
     <div class="card-body">
       <div class="d-flex justify-content-between">
         <span class="fs-4">
-          {{!-- {{#each this.label}}
-            {{#if SFW}}
-              👔
-            {{/if}}
-            {{#if dinner table}}
-              🍽
-            {{/if}}
-            {{#if night out}}
-              👯
-            {{/if}}
-            {{#if first date}}
-              🍷
-            {{/if}}
-          {{/each}} --}}
+          {{#if SFW}}
+            👔
+          {{/if}}
+          {{#if dinnerTable}}
+            🍽
+          {{/if}}
+          {{#if nightOut}}
+            👯
+          {{/if}}
+          {{#if firstDate}}
+            🍷
+          {{/if}}
         </span>
         <span class="fs-4">😨😐</span>
       </div>
       <p class="card-text text-center p-2">{{this.cardText}}</p>
       <div class="d-flex justify-content-between">
-        <a href="#" class="card-link"><img
+        <a href="/mycards/{{this._id}}/edit" class="btn"><img
+            class="svg"
             src="/images/pencil.svg"
             alt=""
           /></a>
-        <a href="#" class="card-link"><img
-            src="/images/trash3.svg"
-            alt=""
-          /></a>
+        <form action="/mycards/{{this._id}}/delete" method="POST">
+          <button
+            type="submit"
+            class="btn"
+            {{! data-bs-toggle="modal" }}
+            {{! data-bs-target="#exampleModal" }}
+          ><img class="svg" src="/images/trash3.svg" alt="" /></button>
+        </form>
       </div>
     </div>
   </div>
