@@ -21,7 +21,8 @@ router.get("/", isLoggedIn, (req, res, next) => {
     .populate("cards")
     .then((foundUser) => {
       let userCards = foundUser.cards;
-      res.render("mycards/my-cards", { cards: userCards });
+      console.log(userCards);
+      res.render("mycards/my-cards", { userCards });
     })
     .catch((error) => {
       console.log(error);
