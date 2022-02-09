@@ -130,9 +130,10 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
 //DELETING AN EXISTING CARD
 
 router.post("/:id/delete", isLoggedIn, (req, res, next) => {
-  const cardId = req.params;
-  PrivateCard.deleteOne({ cardId }).then(() => {
-    console.log("card has been deleted");
+  const { id } = req.params;
+  console.log(id);
+  PrivateCard.findByIdAndDelete(id).then((id) => {
+    console.log("card has been deleted, id ", id);
     res.redirect("/mycards");
   });
 });
