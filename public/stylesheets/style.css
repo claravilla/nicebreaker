@@ -16,6 +16,11 @@ p {
   font-size: 1.3rem;
 }
 
+.svg {
+  filter: invert(99%) sepia(5%) saturate(287%) hue-rotate(354deg)
+    brightness(118%) contrast(95%);
+}
+
 .modal-body {
   font-family: "Nunito", serif;
 }
