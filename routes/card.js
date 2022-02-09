@@ -59,12 +59,13 @@ router.post("/new", (req, res, next) => {
   }
   const cardText = req.body.cardText; //getting the cardText from the body
   const userId = req.session.user._id; //getting the user ID
-  console.log("user ", userId);
+  console.log("this is the logged in user ", userId);
   PrivateCard.create({ cardText, SFW, dinnerTable, nightOut, firstDate }) //create card in private collection
     .then((createdCard) => {
       cardId = createdCard._id;
-      return User.findOneAndUpdate(
-        { id: userId },
+      console.log("this is the used id inside the create card ", userId);
+      return User.findByIdAndUpdate(
+        userId,
         { $push: { cards: cardId } },
         { new: true } //add card to the the user record
       );
