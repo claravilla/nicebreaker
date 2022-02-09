@@ -15,26 +15,20 @@
   </head>
 
   <body>
-    <div>
-      {{#if session.user}}
-        <nav class="navbar d-flex flex-row justify-content-end px-3">
-          <form
-            class="my-1"
-            action="/logout"
-            method="POST"
-          >
-            <button class="btn btn-lg" type="submit">Log out</button>
-          </form>
-        </nav>
-      {{else}}
-        <nav class="navbar d-flex flex-row justify-content-start">
-          <form class="my-1 mx-3">
-            <a class="btn btn-lg" href="/signup">Sign up</a>
-            <a class="btn btn-lg ms-3" href="/login">Log in</a>
-          </form>
-        </nav>
-      {{/if}}
-    </div>
+    {{#if session.user}}
+      <nav class="navbar d-flex flex-row justify-content-end px-3">
+        <form class="my-1" action="/logout" method="POST">
+          <button class="btn btn-lg shadow-sm" type="submit">Log out</button>
+        </form>
+      </nav>
+    {{else}}
+      <nav class="navbar d-flex flex-row justify-content-start">
+        <form class="my-1 mx-3">
+          <a class="btn btn-lg shadow-sm" href="/signup">Sign up</a>
+          <a class="btn btn-lg shadow-sm ms-3" href="/login">Log in</a>
+        </form>
+      </nav>
+    {{/if}}
     <div class="container">
       {{{body}}}
     </div>

@@ -1,5 +1,5 @@
 <div class="col d-flex justify-content-center">
-  <div class="card" style="width: 18rem;">
+  <div class="card shadow" style="width: 18rem;">
     <div class="card-body">
       <div class="d-flex justify-content-between">
         <span class="fs-4">
@@ -20,7 +20,7 @@
       </div>
       <p class="card-text text-center p-2">{{this.cardText}}</p>
       <div class="d-flex justify-content-between">
-        <a href="/mycards/{{this._id}}/edit" class="btn"><img
+        <a href="/mycards/{{this._id}}/edit" class="btn shadow-sm"><img
             class="svg"
             src="/images/pencil.svg"
             alt=""
@@ -28,7 +28,7 @@
         <form action="/mycards/{{this._id}}/delete" method="POST">
           <button
             type="submit"
-            class="btn"
+            class="btn shadow-sm"
             {{! data-bs-toggle="modal" }}
             {{! data-bs-target="#exampleModal" }}
           ><img class="svg" src="/images/trash3.svg" alt="" /></button>

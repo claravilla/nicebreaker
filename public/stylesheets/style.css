@@ -32,6 +32,7 @@ p {
 .btn {
   background-color: #beaee2;
   color: #f9f9f9;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 
 .btn:hover,
