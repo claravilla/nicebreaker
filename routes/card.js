@@ -59,10 +59,10 @@ router.post("/new", (req, res, next) => {
   }
   const cardText = req.body.cardText; //getting the cardText from the body
   const userId = req.session.user._id; //getting the user ID
+  console.log("user ", userId);
   PrivateCard.create({ cardText, SFW, dinnerTable, nightOut, firstDate }) //create card in private collection
     .then((createdCard) => {
       cardId = createdCard._id;
-      console.log(createdCard);
       return User.findOneAndUpdate(
         { id: userId },
         { $push: { cards: cardId } },
@@ -82,7 +82,6 @@ router.post("/new", (req, res, next) => {
 router.get("/:id/edit", (req, res, next) => {
   const { id: cardId } = req.params;
   PrivateCard.findById(cardId).then((card) => {
-    console.log("this is the card to be edited ", card);
     res.render("mycards/edit-card", card);
   });
 });
