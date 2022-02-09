@@ -17,8 +17,12 @@
   <body>
     <div>
       {{#if session.user}}
-        <nav class="navbar d-flex flex-row justify-content-end">
-          <form class="my-1 mx-3" action="/logout" method="POST">
+        <nav class="navbar d-flex flex-row justify-content-end px-3">
+          <form
+            class="my-1"
+            action="/logout"
+            method="POST"
+          >
             <button class="btn btn-lg" type="submit">Log out</button>
           </form>
         </nav>

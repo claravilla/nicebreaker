@@ -1,7 +1,8 @@
-<div class="container d-flex justify-content-center mt-5">
+<div class="container d-flex flex-column align-items-center mt-5">
+
   <button
     type="button"
-    class="btn"
+    class="btn m-1"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
   >
@@ -31,15 +32,26 @@
         <p>Are you sure you want to delete your card?</p>
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-lg" type="submit"><img src="/images/trash3.svg" alt="" class="svg"> </button>
+        <form class="" action="/mycards/{{:id}}/delete" method="POST">
+          <button class="btn btn-lg" type="submit"><img
+              src="/images/trash3.svg"
+              alt=""
+              class="svg"
+            />
+          </button>
+        </form>
       </div>
     </div>
   </div>
 </div>
-
-<div class="container pt-5">
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <a class="btn btn-lg mt-4 mb-2" href="/mycards/new">Add new card</a>
+  <a class="btn btn-lg mb-4 mt-2" href="/">Home</a>
+</div>
+<div class="container">
   <div class="row">
     <div class="col">
+
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <div class="d-flex justify-content-between">
