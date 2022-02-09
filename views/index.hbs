@@ -1,17 +1,63 @@
-<div class="container mt-5">
-  <h1>{{title}}</h1>
-  <p>Welcome to Nicebreaker!</p>
+<!-- Button trigger modal -->
+<div class="container d-flex justify-content-center mt-5">
+  <button
+    type="button"
+    class="btn"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Launch demo modal
+  </button>
 </div>
-<div>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <div class="d-flex justify-content-end">
-        <a href="/" class="card-link">
-          <img src="/images/bookmark.svg" alt="" />
-        </a>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="ModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <p class="card-text text-center p-2 m-1">Some quick example text to build
-        on the card title and make up the bulk of the card's content.</p>
+      <div class="modal-body text-center">
+        To save a card, you need an account!
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <a class="btn btn-lg" href="/signup">Sign up</a>
+        <a class="btn btn-lg" href="/login">Log in</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col d-flex flex-column align-items-center">
+      <h1>{{title}}</h1>
+      <h3>Welcome to Nicebreaker!</h3>
+
+      <div class="mt-5">
+        <div class="card" style="width: 24rem;">
+          <div class="card-body">
+            <div class="d-flex justify-content-end">
+              <a href="/" class="card-link">
+                <img src="/images/bookmark.svg" alt="" />
+              </a>
+            </div>
+            <p class="card-text text-center p-3 m-1">Some quick example text to
+              build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

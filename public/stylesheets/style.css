@@ -8,6 +8,18 @@ body {
   background-color: #f9f9f9;
 }
 
+h1 {
+  font-size: 5rem;
+}
+
+p {
+  font-size: 1.3rem;
+}
+
+.modal-body {
+  font-family: "Nunito", serif;
+}
+
 .card {
   background-color: #cdf0ea;
 }
