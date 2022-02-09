@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Montserrat+Alternates:wght@500;700&family=Nunito&display=swap");
 
 * {
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Nunito", serif;
 }
 
 body {
@@ -19,10 +19,6 @@ p {
 .svg {
   filter: invert(99%) sepia(5%) saturate(287%) hue-rotate(354deg)
     brightness(118%) contrast(95%);
-}
-
-.modal-body {
-  font-family: "Nunito", serif;
 }
 
 .card {

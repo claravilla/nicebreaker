@@ -1,17 +1,72 @@
-<h1>This is where you can create new cards.</h1>
-<form action="/mycards/new" method="post">
-  <div class="form-group">
-    <label for="cardText">Text</label>
-    <input type="text" class="form-control" id="cardText" name="cardText" placeholder="Your text">
+<div class="d-flex justify-content-center">
+  <div class="card mt-5" style="width: 24rem;">
+    <div class="card-body">
+      <form action="/mycards/new" method="post">
+        <div class="form-group mb-4">
+          <label for="cardText" class="card-text">Text</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cardText"
+            name="cardText"
+            placeholder="Your text"
+          />
+        </div>
+        <div class="form-group mb-4">
+          <label for="label" class="card-text">Label</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="sfw"
+              name="sfw"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              SFW
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="dinner-table"
+              name="dinner table"
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              Dinner table
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="night-out"
+              name="night out"
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              Night out
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="first-date"
+              name="first date"
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              First date
+            </label>
+          </div>
+          {{! <select multiple class="form-control"  id="label" name="label">
+          <option value="SFW" class="btn">SFW</option>
+          <option value="dinner table" class="btn">Dinner Table</option>
+          <option value="night out" class="btn">Night Out</option>
+          <option value="first date" class="btn">First date</option>
+        </select> }}
+        </div>
+        <button type="submit" class="btn btn-lg">Submit</button>
+      </form>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="label">Label</label>
-    <select multiple class="form-control" id="label" name="label">
-      <option value="SFW">SFW</option>
-      <option value="dinner table">Dinner Table</option>
-      <option value="night out">Night Out</option>
-      <option value="first date">First date</option>
-    </select>
-  </div>
- <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
