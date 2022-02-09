@@ -41,9 +41,6 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
 
-  //register hbs partials
-  hbs.registerPartials(__dirname + "/views/partials");
-
   // Normalizes the path to the views folder
   app.set("views", path.join(__dirname, "..", "views"));
   // Sets the view engine to handlebars
@@ -68,8 +65,8 @@ module.exports = (app) => {
       }),
     })
   );
-  app.use(function (req,res,next){
+  app.use(function (req, res, next) {
     res.locals.session = req.session;
     next();
-  })
+  });
 };

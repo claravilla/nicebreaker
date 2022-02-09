@@ -18,6 +18,9 @@ const app = express();
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
+//register hbs partials
+hbs.registerPartials(__dirname + "/views/partials");
+
 const projectName = "nicebreaker";
 const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
