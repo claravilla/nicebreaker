@@ -32,7 +32,7 @@ p {
 .btn {
   background-color: #beaee2;
   color: #f9f9f9;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .btn:hover,
@@ -43,4 +43,21 @@ p {
 
 .navbar {
   background-color: #f7dbf0;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-check-input:checked,
+.form-check-input:active,
+.form-check-input::before,
+.form-check-input:focus {
+  background-color: #beaee2;
+  color: #7d7297;
+  box-shadow: none;
+  border: 1px solid #7d7297;
 }
