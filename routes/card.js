@@ -158,9 +158,9 @@ router.post("/bookmark/:id", (req, res, next) => {
         { new: true } //add card to the the user record
       );
     })
-    .then(() => {
-      res.redirect("/mycards");
-    })
+    // .then(() => {
+    //   res.render("index");
+    // })
     .catch((error) => {
       console.log(error);
     });

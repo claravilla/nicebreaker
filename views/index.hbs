@@ -1,3 +1,21 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p>The card has been added to your My Cards collection.</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <a href="/mycards" class="btn btn-lg shadow-sm" type="submit">My cards
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="px-4 py-5 my-5 text-center">
   <h1 class="display-5 fw-bold">{{title}}</h1>
   <div class="col-lg-6 mx-auto">
@@ -18,9 +36,10 @@
           {{#if session.user}}
           <div class="d-flex justify-content-end">
             <form action="/mycards/bookmark/{{randomCard._id}}" method="post">
-            <button type="submit" class="btn shadow-sm">
-              <img class="svg" src="/images/bookmark-plus.svg" alt="bookmark" id="bookmark-img" />
-            </button>
+              <button type="submit" class="btn shadow-sm">
+                <img class="svg" src="/images/bookmark-plus.svg" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  alt="bookmark" id="bookmark-img" />
+              </button>
             </form>
           </div>
           {{/if}}
