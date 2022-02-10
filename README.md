@@ -200,7 +200,6 @@ so I’m not confused where to navigate
 | POST     | "/mycards/:id/delete"   | Delete one card                                                             |
 | POST     | "/mycards/bookmark/:id" | Create a new card in the user collection with the content of the public one |
 | GET      | "/mycards/filter?"      | Fetch all cards for the user that match the filters                         |
-|----------|-------------------------|-----------------------------------------------------------------------------|
 
 ## COMING UP NEXT
 
