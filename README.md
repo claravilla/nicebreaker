@@ -1,7 +1,7 @@
 # NICEBREAKER
 
-Created for anyone who struggles to come up with interesting topic of conversation.
-Sign up and create your own list of dark icebreaker questions, which you can categorised based on occasions.
+Created for anyone who struggles to come up with interesting topic of conversation.  
+Sign up and create your own list of dark icebreaker questions, which you can categorised based on occasions.  
 Don't worry if your mind is going blank, we will suggest questions to help you start.
 
 ## FEATURES
