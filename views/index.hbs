@@ -17,9 +17,11 @@
         <div class="card-body">
           {{#if session.user}}
           <div class="d-flex justify-content-end">
-            <button type="button" class="btn shadow-sm">
-              <img class="svg" src="/images/bookmark.svg" alt="" />
+            <form action="/mycards/bookmark/{{randomCard._id}}" method="post">
+            <button type="submit" class="btn shadow-sm">
+              <img class="svg" src="/images/bookmark-plus.svg" alt="bookmark" id="bookmark-img" />
             </button>
+            </form>
           </div>
           {{/if}}
           <p class="card-text text-center user-select-none p-3 m-1">{{randomCard.cardText}}</p>

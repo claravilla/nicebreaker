@@ -138,6 +138,34 @@ router.post("/:id/delete", isLoggedIn, (req, res, next) => {
   });
 });
 
+//BOOKMARKING A CARD
+
+router.post("/bookmark/:id", (req, res, next) => {
+  const { id } = req.params; //public card Id
+  const userId = req.session.user._id;
+  PublicCard.findById(id)
+    .then((foundCard) => {
+      const { cardText, _id: id } = foundCard;
+      console.log(cardText, id); //getting details of the public card
+      return PrivateCard.create({ cardText });
+    }) //create card in private collection
+    .then((createdCard) => {
+      cardId = createdCard._id;
+      console.log("this is the used id inside the create card ", userId);
+      return User.findByIdAndUpdate(
+        userId,
+        { $push: { cards: cardId } },
+        { new: true } //add card to the the user record
+      );
+    })
+    .then(() => {
+      res.redirect("/mycards");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 // SFW filter
 router.get("/sfw", isLoggedIn, (req, res, next) => {
   console.log(req.query);
