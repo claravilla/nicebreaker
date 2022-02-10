@@ -13,7 +13,7 @@ const User = require("../models/User.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-//GET USER CARDS
+// ***GET USER CARDS***
 
 router.get("/", isLoggedIn, (req, res, next) => {
   const userId = req.session.user._id; //getting the user ID from the session object
@@ -29,11 +29,15 @@ router.get("/", isLoggedIn, (req, res, next) => {
     });
 });
 
-//CREATING A NEW CARD
+// ***CREATE A NEW CARD***
+
+//display form
 
 router.get("/new", isLoggedIn, (req, res, next) => {
   res.render("mycards/create-card");
 });
+
+//create card in the collection
 
 router.post("/new", (req, res, next) => {
   let keys = Object.keys(req.body); //getting the label from the body
@@ -84,7 +88,10 @@ router.post("/new", (req, res, next) => {
     });
 });
 
-//EDITING AN EXISTING CARD
+// ***EDIT AN EXISTING CARD***
+
+// display for with the card details
+
 router.get("/:id/edit", (req, res, next) => {
   const { id: cardId } = req.params;
   PrivateCard.findById(cardId).then((card) => {
@@ -92,9 +99,10 @@ router.get("/:id/edit", (req, res, next) => {
   });
 });
 
+// update the card with the new info
+
 router.post("/:id/edit", isLoggedIn, (req, res, next) => {
   const { id: cardId } = req.params;
-
   let keys = Object.keys(req.body); //getting the label from the body
   let listOfKeys = keys.map((elem) => elem); //in an array
   let label = listOfKeys.splice(1); //drop the cardText
@@ -132,7 +140,7 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
     });
 });
 
-//DELETING AN EXISTING CARD
+// ***DELETE AN EXISTING CARD
 
 router.post("/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
@@ -146,7 +154,7 @@ router.post("/:id/delete", isLoggedIn, (req, res, next) => {
     });
 });
 
-//BOOKMARKING A CARD
+// ***SAVE A CARD FROM THE HOME PAGE IN YOUR COLLECTION***
 
 router.post("/bookmark/:id", (req, res, next) => {
   const { id } = req.params; //public card Id
@@ -171,7 +179,7 @@ router.post("/bookmark/:id", (req, res, next) => {
     });
 });
 
-// FILTER CARDS
+// ***FILTER CARDS VIEW IN USER PROFILE
 
 router.get("/filter", isLoggedIn, (req, res, next) => {
   const userId = req.session.user._id;

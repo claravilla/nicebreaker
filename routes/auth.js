@@ -14,9 +14,14 @@ const User = require("../models/User.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
+// ***SIGN UP***
+
+// display form
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/sign-up");
 });
+
+// create user
 
 router.post("/signup", isLoggedOut, (req, res) => {
   const { email, password } = req.body;
@@ -33,24 +38,12 @@ router.post("/signup", isLoggedOut, (req, res) => {
     });
   }
 
-  //   ! This use case is using a regular expression to control for special characters and min length
-  /*
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-
-  if (!regex.test(password)) {
-    return res.status(400).render("signup", {
-      errorMessage:
-        "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
-    });
-  }
-  */
-
-  // Search the database for a user with the emaik submitted in the form
+  // Search the database for a user with the email submitted in the form
   User.findOne({ email }).then((found) => {
     // If the user is found, send the message email is taken
     if (found) {
       return res.status(400).render("auth/sign-up", {
-        errorMessage: "Email address already taken.",
+        errorMessage: "Email address already in use.",
       });
     }
 
@@ -89,10 +82,14 @@ router.post("/signup", isLoggedOut, (req, res) => {
   });
 });
 
+// ***LOGIN**
+
+//display form
 router.get("/login", isLoggedOut, (req, res) => {
   res.render("auth/log-in");
 });
 
+// login user
 router.post("/login", isLoggedOut, (req, res, next) => {
   const { email, password } = req.body;
 
@@ -104,13 +101,6 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
   }
 
-  // check the length of the password
-  // if (password.length < 8) {
-  //   return res.status(400).render("auth/log-in", {
-  //     errorMessage: "Your password needs to be at least 8 characters long.",
-  //   });
-  // }
-
   // Search the database for a user with the username submitted in the form
   User.findOne({ email })
     .then((user) => {
@@ -121,7 +111,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           .render("auth/log-in", { errorMessage: "Wrong credentials." });
       }
 
-      // If user is found based on the username, check if the in putted password matches the one saved in the database
+      // If user is found based on the email, check if the inputted password matches the one saved in the database
       bcrypt.compare(password, user.password).then((isSamePassword) => {
         if (!isSamePassword) {
           return res
@@ -141,6 +131,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
       // return res.status(500).render("login", { errorMessage: err.message });
     });
 });
+
+// ***LOGOUT***
 
 router.post("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {

@@ -3,13 +3,13 @@ const PublicCard = require("../models/public.card.model");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  PublicCard.findOneRandom(function (err, randomCard) {
+  PublicCard.findOneRandom(function (error, randomCard) {
     //select a random card from the public collection
-    if (!err) {
-      console.log(randomCard);
+    if (!error) {
       res.render("index", { randomCard });
     } else {
-      console.log(err);
+      next(error);
+      res.render("index", { errorMessage: error });
     }
   });
 });
