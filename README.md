@@ -23,6 +23,8 @@ Don't worry if your mind is going blank, we will suggest questions to help you s
 
 ## WIREFRAMES
 
+![image](https://user-images.githubusercontent.com/52048170/153452905-a0abd4a0-1000-4e20-9cb6-4d0db6a761e7.png)
+
 ## USER STORIES
 
 ### **All Visitors**
