@@ -185,7 +185,7 @@ so I’m not confused where to navigate
 ### Route
 
 | Method   | Route                   | Description                                                                 |
-| -------- | ----------------------- | --------------------------------------------------------------------------- | --- |
+| -------- | ----------------------- | --------------------------------------------------------------------------- | 
 | GET      | "/"                     | Home Page                                                                   |
 | -------- | -------                 | -------------                                                               |
 | GET      | "/signp"                | Sign Up Form                                                                |
@@ -206,7 +206,7 @@ so I’m not confused where to navigate
 | -------- | -------                 | -------------                                                               |
 | GET      | "/mycards/:id/edit"     | Display details of one card                                                 |
 | -------- | -------                 | -------------                                                               |
-| POST     | "/mycards/:id/edit"     | Update detail of one card                                                   |     |
+| POST     | "/mycards/:id/edit"     | Update detail of one card                                                   | 
 | -------- | -------                 | -------------                                                               |
 | POST     | "/mycards/:id/delete"   | Delete one card                                                             |
 | -------- | -------                 | -------------                                                               |
