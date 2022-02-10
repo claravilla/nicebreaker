@@ -185,33 +185,19 @@ so I’m not confused where to navigate
 ### Route
 
 | Method   | Route                   | Description                                                                 |
-| -------- | ----------------------- | --------------------------------------------------------------------------- | 
 | GET      | "/"                     | Home Page                                                                   |
-| -------- | -------                 | -------------                                                               |
 | GET      | "/signp"                | Sign Up Form                                                                |
-| -------- | -------                 | -------------                                                               |
 | POST     | "/signup"               | Create user                                                                 |
-| -------- | -------                 | -------------                                                               |
 | GET      | "/login"                | Login Form                                                                  |
-| -------- | -------                 | -------------                                                               |
 | POST     | "/login"                | Authenticate user                                                           |
-| -------- | -------                 | -------------                                                               |
 | POST     | "/logout"               | Logout the user                                                             |
-| -------- | -------                 | -------------                                                               |
 | GET      | "/mycards"              | Fetch all cards for the user                                                |
-| -------- | -------                 | -------------                                                               |
 | GET      | "/mycards/new"          | Add new card form                                                           |
-| -------- | -------                 | -------------                                                               |
 | POST     | "/mycards/new"          | Create new card for the user                                                |
-| -------- | -------                 | -------------                                                               |
 | GET      | "/mycards/:id/edit"     | Display details of one card                                                 |
-| -------- | -------                 | -------------                                                               |
 | POST     | "/mycards/:id/edit"     | Update detail of one card                                                   | 
-| -------- | -------                 | -------------                                                               |
 | POST     | "/mycards/:id/delete"   | Delete one card                                                             |
-| -------- | -------                 | -------------                                                               |
 | POST     | "/mycards/bookmark/:id" | Create a new card in the user collection with the content of the public one |
-| -------- | -------                 | -------------                                                               |
 | GET      | "/mycards/filter?"      | Fetch all cards for the user that match the filters                         |
 
 ## COMING UP NEXT
