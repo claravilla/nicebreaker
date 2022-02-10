@@ -16,13 +16,13 @@
 
   <body>
     {{#if session.user}}
-      <nav class="navbar d-flex flex-row justify-content-end px-3">
+      <nav class="navbar d-flex justify-content-end px-3">
         <form class="my-1" action="/logout" method="POST">
           <button class="btn btn-lg shadow-sm" type="submit">Log out</button>
         </form>
       </nav>
     {{else}}
-      <nav class="navbar d-flex flex-row justify-content-start">
+      <nav class="navbar d-flex justify-content-start">
         <form class="my-1 mx-3">
           <a class="btn btn-lg shadow-sm" href="/signup">Sign up</a>
           <a class="btn btn-lg shadow-sm ms-3" href="/login">Log in</a>
