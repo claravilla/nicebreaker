@@ -1,31 +1,29 @@
 <div class="col d-flex justify-content-center">
-  <div class="card shadow">
-    <div class="card-body">
-      <div class="d-flex justify-content-start">
-        <span class="fs-4">
-          {{#if SFW}}
-          👔
-          {{/if}}
-          {{#if dinnerTable}}
-          🍽
-          {{/if}}
-          {{#if nightOut}}
-          👯
-          {{/if}}
-          {{#if firstDate}}
-          🍷
-          {{/if}}
-        </span>
-      </div>
-      <p class="card-text text-center p-2">{{this.cardText}}</p>
-      <div class="d-flex justify-content-between align-items-center">
-        <form action="/mycards/{{this._id}}/edit" method="get">
+  <div class="card shadow" style="width: 21rem; min-height: 14rem">
+    <div class="card-body d-flex flex-column justify-content-between">
+      <p class="card-text fs-4 text-start">
+        {{#if SFW}}
+        👔
+        {{/if}}
+        {{#if dinnerTable}}
+        🍽
+        {{/if}}
+        {{#if nightOut}}
+        👯
+        {{/if}}
+        {{#if firstDate}}
+        🍷
+        {{/if}}
+        &nbsp;
+      </p>
+      <p class="card-text card-text-middle text-center">{{this.cardText}}</p>
+      <div class="card-text d-flex justify-content-between">
+        <form action="/mycards/{{this._id}}/edit" method="get" class="d-inline-block mb-0">
           <button type="submit" class="btn shadow-sm">
             <img class="svg" src="/images/pencil.svg" alt="" />
           </button>
         </form>
-
-        <form action="/mycards/{{this._id}}/delete" method="POST">
+        <form action="/mycards/{{this._id}}/delete" method="POST" class="d-inline-block mb-0">
           <button type="submit" class="btn shadow-sm"><img class="svg" src="/images/trash3.svg" alt="" /></button>
         </form>
       </div>
