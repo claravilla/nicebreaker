@@ -60,6 +60,7 @@ h1 {
 
 .sort-box {
   border: 2px solid #beaee2;
+  border-radius: 8px;
 }
 
 a {
