@@ -54,8 +54,7 @@ p {
 
 .form-check-input:checked,
 .form-check-input:active,
-.form-check-input::before,
-.form-check-input:focus {
+.form-check-input::before {
   background-color: #beaee2;
   color: #7d7297;
   box-shadow: none;
