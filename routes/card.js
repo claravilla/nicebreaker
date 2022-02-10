@@ -167,4 +167,9 @@ router.post("/bookmark/:id", (req, res, next) => {
     });
 });
 
+// SFW filter
+router.get("/sfw", isLoggedIn, (req, res, next) => {
+  console.log(req.query);
+});
+
 module.exports = router;
