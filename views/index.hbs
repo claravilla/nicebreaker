@@ -16,10 +16,11 @@
   </div>
 </div>
 
-<div class="px-4 py-5 my-5 text-center">
+<div class="px-4 py-2 mt-5 mb-3 text-center">
   <h1 class="display-5 fw-bold">{{title}}</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">Describe what Nicebreaker is.</p>
+    <p class="lead mb-4">Your mind go blank often? Look no further, fill your pocket with some slightly disturbing
+      nicebreakers - questions that push your conversations past 'superficial'.</p>
     {{#if session.user}}
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
       <a class="btn btn-lg shadow-sm px-2" href="/mycards">My cards</a>
@@ -28,22 +29,24 @@
   </div>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-2">
   <div class="row">
     <div class="col d-flex flex-column align-items-center">
-      <div class="card shadow vw-40">
-        <div class="card-body">
-          {{#if session.user}}
-          <div class="d-flex justify-content-end">
+      <div class="card shadow pb-4" style="width: 21rem; height: 10rem">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="card-text d-flex justify-content-end">
             <form action="/mycards/bookmark/{{randomCard._id}}" method="post">
+              &nbsp;
+              {{#if session.user}}
               <button type="submit" class="btn shadow-sm">
                 <img class="svg" src="/images/bookmark-plus.svg" data-bs-toggle="modal" data-bs-target="#exampleModal"
                   alt="bookmark" id="bookmark-img" />
               </button>
+              {{/if}}
             </form>
           </div>
-          {{/if}}
-          <p class="card-text text-center user-select-none p-3 m-1">{{randomCard.cardText}}</p>
+          <p class="card-text text-center user-select-none card-text-middle">{{randomCard.cardText}}</p>
+          <p class="card-text">&nbsp;</p>
         </div>
       </div>
       <form action="/" method="get">

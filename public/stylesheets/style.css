@@ -13,10 +13,6 @@ h1 {
   font-size: 5rem;
 }
 
-p {
-  font-size: 1.1rem;
-}
-
 .svg {
   filter: invert(99%) sepia(5%) saturate(287%) hue-rotate(354deg)
     brightness(118%) contrast(95%);
@@ -26,7 +22,7 @@ p {
   background-color: #cdf0ea;
 }
 
-.card-text {
+.card-text-middle {
   font-family: "Lora", serif;
 }
 
@@ -60,4 +56,8 @@ p {
   color: #7d7297;
   box-shadow: none;
   border: 1px solid #7d7297;
+}
+
+.sort-box {
+  border: 2px solid #beaee2;
 }

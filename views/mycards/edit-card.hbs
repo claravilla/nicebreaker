@@ -1,73 +1,45 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-2">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="-">Home</a></li>
+    <li class="breadcrumb-item"><a href="/mycards">My cards</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit card</li>
+  </ol>
+</nav>
+
 <div class="d-flex justify-content-center">
   <div class="card shadow mt-5" style="width: 24rem;">
     <div class="card-body">
       <form action="/mycards/{{this._id}}/edit" method="post">
         <div class="form-group mb-4">
           <label for="cardText" class="card-text">Text</label>
-          <input
-            type="text"
-            class="form-control"
-            id="cardText"
-            name="cardText"
-            placeholder="Your text"
-            value="{{this.cardText}}"
-            required
-          />
+          <input type="text" class="form-control" id="cardText" name="cardText" placeholder="Your text"
+            value="{{this.cardText}}" required />
         </div>
         <div class="form-group mb-4">
           <label for="label" class="card-text">Label</label>
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="SFW"
-              name="SFW"
-              {{#if this.SFW}}
-              checked
-              {{/if}}
-            />
+            <input class="form-check-input" type="checkbox" id="SFW" name="SFW" {{#if this.SFW}} checked {{/if}} />
             <label class="form-check-label" for="SFW">
               SFW
             </label>
           </div>
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="dinner-table"
-              name="dinner table"
-              {{#if this.dinnerTable}}
-              checked
-              {{/if}}
-            />
+            <input class="form-check-input" type="checkbox" id="dinner-table" name="dinner table" {{#if
+              this.dinnerTable}} checked {{/if}} />
             <label class="form-check-label" for="dinner-table">
               Dinner table
             </label>
           </div>
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="night-out"
-              name="night out"
-               {{#if this.nightOut}}
-              checked
-              {{/if}}
-            />
+            <input class="form-check-input" type="checkbox" id="night-out" name="night out" {{#if this.nightOut}}
+              checked {{/if}} />
             <label class="form-check-label" for="night-out">
               Night out
             </label>
           </div>
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="first-date"
-              name="first date"
-               {{#if this.firstDate}}
-              checked
-              {{/if}}
-            />
+            <input class="form-check-input" type="checkbox" id="first-date" name="first date" {{#if this.firstDate}}
+              checked {{/if}} />
             <label class="form-check-label" for="first-date">
               First date
             </label>
@@ -78,28 +50,20 @@
     </div>
   </div>
   {{#if errorMessage}}
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol
-        id="exclamation-triangle-fill"
-        fill="currentColor"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-        ></path>
-      </symbol>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z">
+      </path>
+    </symbol>
+  </svg>
+  <div class="alert alert-warning d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+      <use xlink:href="#exclamation-triangle-fill"></use>
     </svg>
-    <div class="alert alert-warning d-flex align-items-center" role="alert">
-      <svg
-        class="bi flex-shrink-0 me-2"
-        width="24"
-        height="24"
-        role="img"
-        aria-label="Warning:"
-      ><use xlink:href="#exclamation-triangle-fill"></use></svg>
-      <div>
-        {{errorMessage}}
-      </div>
+    <div>
+      {{errorMessage}}
     </div>
+  </div>
   {{/if}}
 </div>
