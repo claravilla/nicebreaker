@@ -5,18 +5,17 @@
     <li class="breadcrumb-item active" aria-current="page">Edit card</li>
   </ol>
 </nav>
-
+<h2 class="text-center mt-4">Edit your card</h2>
 <div class="d-flex justify-content-center">
-  <div class="card shadow mt-5" style="width: 24rem;">
+  <div class="card shadow mt-3" style="width: 24rem;">
     <div class="card-body">
       <form action="/mycards/{{this._id}}/edit" method="post">
         <div class="form-group mb-4">
-          <label for="cardText" class="card-text">Text</label>
           <input type="text" class="form-control" id="cardText" name="cardText" placeholder="Your text"
             value="{{this.cardText}}" required />
         </div>
         <div class="form-group mb-4">
-          <label for="label" class="card-text">Label</label>
+          <label for="label" class="card-text">Labels</label>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="SFW" name="SFW" {{#if this.SFW}} checked {{/if}} />
             <label class="form-check-label" for="SFW">
@@ -45,7 +44,9 @@
             </label>
           </div>
         </div>
+        <div class="d-flex justify-content-center">
         <button type="submit" class="btn shadow-sm btn-lg shadow-sm">Submit</button>
+        </div>
       </form>
     </div>
   </div>
