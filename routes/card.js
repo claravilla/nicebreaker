@@ -60,7 +60,14 @@ router.post("/new", (req, res, next) => {
   const cardText = req.body.cardText; //getting the cardText from the body
   const userId = req.session.user._id; //getting the user ID
   console.log("this is the logged in user ", userId);
-  PrivateCard.create({ cardText, SFW, dinnerTable, nightOut, firstDate }) //create card in private collection
+  PrivateCard.create({
+    cardText,
+    SFW,
+    dinnerTable,
+    nightOut,
+    firstDate,
+    userId,
+  }) //create card in private collection
     .then((createdCard) => {
       cardId = createdCard._id;
       console.log("this is the used id inside the create card ", userId);
@@ -166,9 +173,22 @@ router.post("/bookmark/:id", (req, res, next) => {
     });
 });
 
-// SFW filter
-router.get("/sfw", isLoggedIn, (req, res, next) => {
-  console.log(req.query);
+// FILTER CARDS
+
+router.get("/filter", isLoggedIn, (req, res, next) => {
+  const userId = req.session.user._id;
+  let queryString = {
+    userId: userId,
+  };
+  for (let key in req.query) {
+    //adding the filter coming from the query to the obj
+    queryString[key] = true;
+  }
+
+  PrivateCard.find(queryString).then((userCards) => {
+    console.log(userCards);
+    res.render("mycards/my-cards", { userCards });
+  });
 });
 
 module.exports = router;
