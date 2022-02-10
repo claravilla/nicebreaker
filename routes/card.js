@@ -140,7 +140,7 @@ router.post("/:id/delete", isLoggedIn, (req, res, next) => {
 
 // SFW filter
 router.get("/sfw", isLoggedIn, (req, res, next) => {
-  console.log(req.body);
+  console.log(req.query);
 });
 
 module.exports = router;

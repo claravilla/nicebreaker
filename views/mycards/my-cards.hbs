@@ -24,26 +24,27 @@
 </div>
 <h2>Sort your cards by:</h2>
 
-<div class="d-flex justify-content-evenly mt-3 mb-5">
-  <form action="/mycards/sfw" method="get">
+<form action="/mycards/filter" method="get">
+  <div class="d-flex justify-content-evenly mt-3 mb-5">
     <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" role="switch" id="sfw" name="SFW" onChange="this.form.submit()">
+      <input class="form-check-input" type="checkbox" role="switch" id="sfw" name="SFW">
       <label class="form-check-label" for="sfw">SFW</label>
     </div>
-  </form>
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="dinner-table" name="dinnerTable">
-    <label class="form-check-label" for="dinner-table">Dinner table</label>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="dinner-table" name="dinnerTable">
+      <label class="form-check-label" for="dinner-table">Dinner table</label>
+    </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="night-out" name="nightOut">
+      <label class="form-check-label" for="night-out">Night out</label>
+    </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="first-date" name="firstDate">
+      <label class="form-check-label" for="first-date">First date</label>
+    </div>
+    <button class="btn btn shadow-sm" type="submit">Filter</button>
   </div>
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="night-out" name="nightOut">
-    <label class="form-check-label" for="night-out">Night out</label>
-  </div>
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="first-date" name="firstDate">
-    <label class="form-check-label" for="first-date">First date</label>
-  </div>
-</div>
+</form>
 <div class="container">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     {{#each userCards}}
