@@ -24,7 +24,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
       res.render("mycards/my-cards", { userCards });
     })
     .catch((error) => {
-      console.log(error);
+      res.render("mycards/my-cards", { errorMessage: error });
       next(error);
     });
 });
@@ -44,7 +44,7 @@ router.post("/new", (req, res, next) => {
     dinnerTable = false,
     nightOut = false,
     firstDate = false;
-  //if boolean is the array of label we set it to true
+  //if boolean is in the array of labels we set it to true
   if (label.includes("SFW")) {
     SFW = true;
   }
@@ -59,7 +59,6 @@ router.post("/new", (req, res, next) => {
   }
   const cardText = req.body.cardText; //getting the cardText from the body
   const userId = req.session.user._id; //getting the user ID
-  console.log("this is the logged in user ", userId);
   PrivateCard.create({
     cardText,
     SFW,
@@ -70,7 +69,6 @@ router.post("/new", (req, res, next) => {
   }) //create card in private collection
     .then((createdCard) => {
       cardId = createdCard._id;
-      console.log("this is the used id inside the create card ", userId);
       return User.findByIdAndUpdate(
         userId,
         { $push: { cards: cardId } },
@@ -81,7 +79,7 @@ router.post("/new", (req, res, next) => {
       res.redirect("/mycards");
     })
     .catch((error) => {
-      console.log(error);
+      next(error);
       res.render("mycards/create-card", { errorMessage: error });
     });
 });
@@ -105,7 +103,7 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
     dinnerTable = false,
     nightOut = false,
     firstDate = false;
-  //if the boolean are in the array of label, we set them to true
+  //if the boolean are in the array of labels, we set them to true
   if (label.includes("SFW")) {
     SFW = true;
   }
@@ -126,10 +124,10 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
     { new: true }
   )
     .then((card) => {
-      console.log("card had been update: ", card);
       res.redirect("/mycards");
     })
     .catch((error) => {
+      next(error);
       res.render("mycards/edit-card", { errorMessage: error });
     });
 });
@@ -138,11 +136,14 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
 
 router.post("/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  console.log(id);
-  PrivateCard.findByIdAndDelete(id).then((id) => {
-    console.log("card has been deleted, id ", id);
-    res.redirect("/mycards");
-  });
+  PrivateCard.findByIdAndDelete(id)
+    .then((id) => {
+      res.redirect("/mycards");
+    })
+    .catch((error) => {
+      next(error);
+      res.render("mycards/my-cards", { errorMessage: error });
+    });
 });
 
 //BOOKMARKING A CARD
@@ -152,24 +153,21 @@ router.post("/bookmark/:id", (req, res, next) => {
   const userId = req.session.user._id;
   PublicCard.findById(id)
     .then((foundCard) => {
-      const { cardText, _id: id } = foundCard;
-      console.log(cardText, id); //getting details of the public card
+      const { cardText, _id: id } = foundCard; //getting details of the public card
       return PrivateCard.create({ cardText });
-    }) //create card in private collection
+    })
     .then((createdCard) => {
+      //create card in private collection
       cardId = createdCard._id;
-      console.log("this is the used id inside the create card ", userId);
       return User.findByIdAndUpdate(
         userId,
         { $push: { cards: cardId } },
         { new: true } //add card to the the user record
       );
     })
-    // .then(() => {
-    //   res.render("index");
-    // })
     .catch((error) => {
-      console.log(error);
+      next(error);
+      res.render("index", { errorMessage: error });
     });
 });
 
@@ -184,11 +182,17 @@ router.get("/filter", isLoggedIn, (req, res, next) => {
     //adding the filter coming from the query to the obj
     queryString[key] = true;
   }
-
-  PrivateCard.find(queryString).then((userCards) => {
-    console.log(userCards);
-    res.render("mycards/my-cards", { userCards });
-  });
+  PrivateCard.find(queryString)
+    .then((userCards) => {
+      res.render("mycards/my-cards", {
+        userCards: userCards,
+        filter: queryString,
+      });
+    })
+    .catch((error) => {
+      next(error);
+      res.render("mycards/my-cards", { errorMessage: error });
+    });
 });
 
 module.exports = router;
