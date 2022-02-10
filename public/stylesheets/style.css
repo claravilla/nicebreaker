@@ -61,3 +61,15 @@ h1 {
 .sort-box {
   border: 2px solid #beaee2;
 }
+
+a {
+  color: #7d7297;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-footer {
+  border: none;
+}
