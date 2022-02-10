@@ -17,14 +17,18 @@ Don't worry if your mind is going blank, we will suggest questions to help you s
 - Update your saved question
 - Delete your question if you don't like them anymore
 
-###**Try it yourself:**  
+### **Try it yourself:**  
 
 [NiceBreaker](https://nicebreaker.herokuapp.com/)
+
+---
 
 ## WIREFRAMES
 
 
 ![image](https://user-images.githubusercontent.com/52048170/153452905-a0abd4a0-1000-4e20-9cb6-4d0db6a761e7.png)
+
+---
 
 ## USER STORIES
 
@@ -128,6 +132,8 @@ As a logged in user of this app
 I don’t want to see a signup and login button  
 so I’m not confused where to navigate.  
 
+---
+
 ## BUILT WITH
 
 - Express Node.js
@@ -160,10 +166,14 @@ so I’m not confused where to navigate.
 | POST     | "/mycards/bookmark/:id" | Create a new card in the user collection with the content of the public one |
 | GET      | "/mycards/filter?"      | Fetch all cards for the user that match the filters                         |
 
+---
+
 ## COMING UP NEXT
 
 - Mark your question as successfull or not
 - Submit your nicebraker to be added to the public ones
+
+---
 
 ## BUILD BY
 
