@@ -13,6 +13,7 @@ const privateCardSchema = new Schema(
     hasWorked: Boolean,
     hasNotWorked: Boolean,
     publicCardId: String,
+    userId: String,
     public: { type: Boolean, default: false },
   },
   { timestamps: true }
