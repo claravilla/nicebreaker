@@ -159,8 +159,7 @@ router.post("/bookmark/:id", (req, res, next) => {
       );
     })
     .then(() => {
-      let bookmarked = true;
-      res.render("index", { bookmarked });
+      res.redirect("/mycards");
     })
     .catch((error) => {
       console.log(error);
