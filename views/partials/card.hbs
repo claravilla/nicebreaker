@@ -4,33 +4,29 @@
       <div class="d-flex justify-content-start">
         <span class="fs-4">
           {{#if SFW}}
-            👔
+          👔
           {{/if}}
           {{#if dinnerTable}}
-            🍽
+          🍽
           {{/if}}
           {{#if nightOut}}
-            👯
+          👯
           {{/if}}
           {{#if firstDate}}
-            🍷
+          🍷
           {{/if}}
         </span>
       </div>
       <p class="card-text text-center p-2">{{this.cardText}}</p>
-      <div class="d-flex justify-content-between">
-        <a href="/mycards/{{this._id}}/edit" class="btn shadow-sm"><img
-            class="svg"
-            src="/images/pencil.svg"
-            alt=""
-          /></a>
+      <div class="d-flex justify-content-between align-items-center">
+        <form action="/mycards/{{this._id}}/edit" method="get">
+          <button type="submit" class="btn shadow-sm">
+            <img class="svg" src="/images/pencil.svg" alt="" />
+          </button>
+        </form>
+
         <form action="/mycards/{{this._id}}/delete" method="POST">
-          <button
-            type="submit"
-            class="btn shadow-sm"
-            {{! data-bs-toggle="modal" }}
-            {{! data-bs-target="#exampleModal" }}
-          ><img class="svg" src="/images/trash3.svg" alt="" /></button>
+          <button type="submit" class="btn shadow-sm"><img class="svg" src="/images/trash3.svg" alt="" /></button>
         </form>
       </div>
     </div>
