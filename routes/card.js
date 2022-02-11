@@ -162,7 +162,7 @@ router.post("/bookmark/:id", (req, res, next) => {
   PublicCard.findById(id)
     .then((foundCard) => {
       const { cardText, _id: id } = foundCard; //getting details of the public card
-      return PrivateCard.create({ cardText });
+      return PrivateCard.create({ cardText, userId });
     })
     .then((createdCard) => {
       //create card in private collection
