@@ -3,28 +3,40 @@
     <div class="card-body d-flex flex-column justify-content-between">
       <p class="card-text fs-5 text-start">
         {{#if SFW}}
-        👔
+          👔
         {{/if}}
         {{#if dinnerTable}}
-        🍽
+          🍽
         {{/if}}
         {{#if nightOut}}
-        👯
+          👯
         {{/if}}
         {{#if firstDate}}
-        🍷
+          🍷
         {{/if}}
         &nbsp;
       </p>
       <p class="card-text card-text-middle text-center">{{this.cardText}}</p>
       <div class="card-text d-flex justify-content-between">
-        <form action="/mycards/{{this._id}}/edit" method="get" class="d-inline-block mb-0">
+        <form
+          action="/mycards/{{this._id}}/edit"
+          method="get"
+          class="d-inline-block mb-0"
+        >
           <button type="submit" class="btn shadow-sm">
-            <img class="svg" src="/images/pencil.svg" alt="" />
+            <img class="svg" src="/images/pencil.svg" alt="pencil" />
           </button>
         </form>
-        <form action="/mycards/{{this._id}}/delete" method="POST" class="d-inline-block mb-0">
-          <button type="submit" class="btn shadow-sm"><img class="svg" src="/images/trash3.svg" alt="" /></button>
+        <form
+          action="/mycards/{{this._id}}/delete"
+          method="POST"
+          class="d-inline-block mb-0"
+        >
+          <button type="submit" class="btn shadow-sm"><img
+              class="svg"
+              src="/images/trash3.svg"
+              alt="trash can"
+            /></button>
         </form>
       </div>
     </div>
