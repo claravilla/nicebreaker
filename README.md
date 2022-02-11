@@ -123,6 +123,7 @@ Don't worry if your mind is going blank, we will suggest questions to help you s
 
 - Mark your question as successfull or not
 - Submit your nicebreaker to be added to the public ones
+- Select multiple cards for deletion
 
 ---
 
