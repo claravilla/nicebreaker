@@ -40,7 +40,7 @@ Don't worry if your mind is going blank, we will suggest questions to help you s
 - Private Cards
 - Public Cards
 
-## ROUTE
+## ROUTES
 
 | Method | Route                   | Description                                                                 |
 | ------ | ----------------------- | --------------------------------------------------------------------------- |
@@ -51,8 +51,8 @@ Don't worry if your mind is going blank, we will suggest questions to help you s
 | POST   | "/login"                | Authenticate user                                                           |
 | POST   | "/logout"               | Logout the user                                                             |
 | GET    | "/mycards"              | Fetch all cards for the user                                                |
-| GET    | "/mycards/new"          | Add new card form                                                           |
-| POST   | "/mycards/new"          | Create new card for the user                                                |
+| GET    | "/mycards/create"       | Add new card form                                                           |
+| POST   | "/mycards/create"       | Create new card for the user                                                |
 | GET    | "/mycards/:id/edit"     | Display details of one card                                                 |
 | POST   | "/mycards/:id/edit"     | Update detail of one card                                                   |
 | POST   | "/mycards/:id/delete"   | Delete one card                                                             |
@@ -122,15 +122,15 @@ Don't worry if your mind is going blank, we will suggest questions to help you s
 ## COMING UP NEXT
 
 - Mark your question as successfull or not
-- Submit your nicebraker to be added to the public ones
+- Submit your nicebreaker to be added to the public ones
 
 ---
 
 ## RESOURCES
 
-[Bootstrap](https://getbootstrap.com/)
-[Express.js](https://expressjs.com/)
-[MongoDB](https://www.mongodb.com/atlas/database)
+[Bootstrap](https://getbootstrap.com/)  
+[Express.js](https://expressjs.com/)  
+[MongoDB](https://www.mongodb.com/atlas/database)  
 [Mongoose](https://mongoosejs.com/)
 
 ---

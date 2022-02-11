@@ -33,13 +33,13 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 //display form
 
-router.get("/new", isLoggedIn, (req, res, next) => {
+router.get("/create", isLoggedIn, (req, res, next) => {
   res.render("mycards/create-card");
 });
 
 //create card in the collection
 
-router.post("/new", (req, res, next) => {
+router.post("/create", (req, res, next) => {
   let keys = Object.keys(req.body); //getting the label from the body
   let listOfKeys = keys.map((elem) => elem); //put then in an array
   let label = listOfKeys.splice(1); //drop the cardText
