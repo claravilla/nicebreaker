@@ -61,7 +61,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((user) => {
         // Bind the user to the session object
         req.session.user = user;
-        res.render("mycards/my-cards");
+        res.redirect("/mycards");
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
