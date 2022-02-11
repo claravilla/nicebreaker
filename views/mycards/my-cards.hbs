@@ -71,6 +71,39 @@
   </form>
 </div>
 {{/if}}
+{{#if hasFilter}}
+<div class="sort-box p-3 mb-3">
+  <h4>Sort your cards by:</h4>
+  <form action="/mycards/filter" method="get">
+    <div class="d-flex justify-content-evenly mb-3">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="sfw" name="SFW" {{#if
+          filter.SFW}}checked{{/if}}>
+        <label class="form-check-label" for="sfw">SFW</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="dinner-table" name="dinnerTable" {{#if
+          filter.dinnerTable}}checked{{/if}}>
+        <label class="form-check-label" for="dinner-table">Dinner table</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="night-out" name="nightOut" {{#if
+          filter.nightOut}}checked{{/if}}>
+        <label class="form-check-label" for="night-out">Night out</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="first-date" name="firstDate" {{#if
+          filter.firstDate}}checked{{/if}}>
+        <label class="form-check-label" for="first-date">First date</label>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-sm shadow-sm me-3" type="submit">Filter</button>
+      <a href="/mycards" class="btn btn-sm shadow-sm">Reset</a>
+    </div>
+  </form>
+</div>
+{{/if}}
 <div class="container mb-5">
   <div class="row row-cols-xxl-4 g-4">
     {{#each userCards}}
