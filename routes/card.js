@@ -193,7 +193,7 @@ router.get("/filter", isLoggedIn, (req, res, next) => {
   PrivateCard.find(queryString)
     .then((userCards) => {
       res.render("mycards/my-cards", {
-        hasFilter: true,
+        userCards: userCards,
         filter: queryString,
       });
     })
