@@ -38,7 +38,7 @@
     </div>
   </div>
 </section>
-
+{{#if userCards}}
 <div class="sort-box p-3 mb-3">
   <h4>Sort your cards by:</h4>
   <form action="/mycards/filter" method="get">
@@ -70,6 +70,7 @@
     </div>
   </form>
 </div>
+{{/if}}
 <div class="container mb-5">
   <div class="row row-cols-xxl-4 g-4">
     {{#each userCards}}
