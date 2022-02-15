@@ -45,7 +45,7 @@ Don't worry if your mind is going blank, we will suggest questions to help you s
 | Method | Route                   | Description                                                                 |
 | ------ | ----------------------- | --------------------------------------------------------------------------- |
 | GET    | "/"                     | Home Page                                                                   |
-| GET    | "/signp"                | Sign Up Form                                                                |
+| GET    | "/signup"                | Sign Up Form                                                                |
 | POST   | "/signup"               | Create user                                                                 |
 | GET    | "/login"                | Login Form                                                                  |
 | POST   | "/login"                | Authenticate user                                                           |
@@ -121,7 +121,7 @@ Don't worry if your mind is going blank, we will suggest questions to help you s
 
 ## COMING UP NEXT
 
-- Mark your question as successfull or not
+- Mark your question as successful or not
 - Submit your nicebreaker to be added to the public ones
 - Select multiple cards for deletion
 
